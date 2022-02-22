@@ -1,0 +1,3 @@
+[submodule "prueba-next"]
+	path = prueba-next
+	url = git@github.com:tzuzulcode/prueba-next.git
