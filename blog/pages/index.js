@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 export default function Home() {
   const { data: session } = useSession()
   return (
-    <div className='bg-gray-100'>
+    <div>
       <p>{session?"Sesion iniciada":"Sin sesion"}</p>
       {console.log(session?.user)}
        <button onClick={() => signIn()}>Sign in</button>
