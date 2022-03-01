@@ -1,15 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useSession, signIn, signOut } from "next-auth/react"
+import Link from 'next/link'
 
 export default function Home() {
   const { data: session } = useSession()
   return (
     <div>
-      <p>{session?"Sesion iniciada":"Sin sesion"}</p>
+      <p>{session?"Sesion iniciada "+session?.user.name:"Sin sesion"}</p>
       {console.log(session?.user)}
        <button onClick={() => signIn()}>Sign in</button>
        <button onClick={() => signOut()}>Sign out</button>
+       <Link href="/editor">Editor</Link>
     </div>
   )
 }
