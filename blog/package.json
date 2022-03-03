@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@uiw/react-markdown-editor": "^3.2.7",
+    "axios": "^0.26.0",
     "firebase": "^9.4.1",
     "next": "12.1.0",
     "next-auth": "^4.2.1",
