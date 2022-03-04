@@ -20,8 +20,6 @@ export default NextAuth({
     },
     callbacks:{
         async jwt({token,account}){
-            console.log("JWT",token)
-            console.log("Account",account)
             if(account?.providerAccountId){
                 token.id = account.providerAccountId
                 const snapshot = await getDoc(doc(database,"users",account.providerAccountId))
@@ -55,7 +53,6 @@ export default NextAuth({
                 session.user.id = token.id
                 session.user.role = token.role
             }
-            console.log("Session",session)
             return session
         }
     }

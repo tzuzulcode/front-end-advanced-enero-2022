@@ -6,7 +6,7 @@ export default async function list(req,res){
     const docs = await getDocs(q)
     const data = []
     docs.forEach(doc=>{
-        data.push(doc.data())
+        data.push({...doc.data(),id:doc.id})
     })
     return res.json(data)
 }
