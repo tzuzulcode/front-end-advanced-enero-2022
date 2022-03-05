@@ -39,7 +39,7 @@ export default function Create() {
     }
 
   return (
-    <AdminPage>
+    <>
 
         <div className='p-7'>
             <input className='text-black' type="text" ref={titulo} placeholder="Titulo de la publicación"></input>
@@ -53,6 +53,6 @@ export default function Create() {
             <button className='bg-yellow-200 text-black px-5 py-2 rounded-md mt-10' onClick={saveContent}>Guardar</button>
         </div>
 
-    </AdminPage>
+    </>
   )
 }

@@ -19,11 +19,11 @@ export async function getServerSideProps(context){
 
 export default function Posts({posts}) {
     return (
-        <AdminPage>
+        <>
             <h1>Posts</h1>
             <Link href="/admin/posts/create">Crear nueva publicación</Link>
 
-            <section className='grid grid-cols-4 gap-5 m-10'>
+            <section className='grid grid-cols-4 gap-5'>
             {posts.map((post)=>{
                 return <article className='bg-slate-700 p-5' key={post.id}>
                     <div className='flex items-center mb-5'>
@@ -40,6 +40,6 @@ export default function Posts({posts}) {
                 </article>
             })}
             </section>
-        </AdminPage>
+        </>
     )
 }

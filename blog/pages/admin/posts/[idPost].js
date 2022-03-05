@@ -18,11 +18,11 @@ export async function getServerSideProps(context){
 
 export default function Post({post}) {
   return (
-    <div>
+    <>
         <h1>Post</h1>
-        <article className='prose prose-invert'>
+        <article className='prose prose-xl leading-10 prose-p:my-16 prose-invert p-5 md:0'>
             <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
-    </div>
+    </>
   )
 }
