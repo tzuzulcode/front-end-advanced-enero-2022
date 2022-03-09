@@ -7,6 +7,7 @@ import '@uiw/react-markdown-preview/markdown.css'
 import axios from 'axios'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const MarkDownEditor = dynamic(
     ()=>import("@uiw/react-markdown-editor").then((mod)=>mod.default),{
@@ -39,9 +40,8 @@ export default function Create() {
     }
 
   return (
-    <>
-
-        <div className='p-7'>
+      <>
+         <div className='p-7'>
             <input className='text-black' type="text" ref={titulo} placeholder="Titulo de la publicación"></input>
             <input className='text-black' type="text" ref={image} placeholder="Imagen de la publicación"></input>
             <MarkDownEditor
@@ -49,10 +49,11 @@ export default function Create() {
                 onChange={(editor,data,value)=>{
                     setContent(value)
                 }}
+                minHeight={500}
             />
             <button className='bg-yellow-200 text-black px-5 py-2 rounded-md mt-10' onClick={saveContent}>Guardar</button>
         </div>
 
-    </>
+      </>
   )
 }

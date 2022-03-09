@@ -21,9 +21,11 @@ export default function AdminPage({children}) {
             </ul>
         </section>
 
-        <section className='max-w-screen-2xl mx-auto text-white'>
-            {children}
-        </section>
+        <main className='flex justify-center'>
+            <section className="w-9/12 bg-red-500">
+                {children} 
+            </section>
+        </main>
     </>
   )
 }
