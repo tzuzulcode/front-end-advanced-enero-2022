@@ -1,17 +1,35 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useSession, signIn, signOut } from "next-auth/react"
-import Link from 'next/link'
+import axios from 'axios'
 
-export default function Home() {
-  const { data: session } = useSession()
+export async function getServerSideProps(context){
+  const secure = context.req.connection.encrypted
+  
+  const url = `${secure?"https":"http"}://${context.req.headers.host}/api/posts`
+  
+  const res = await axios.get(url)
+  
+  return {
+      props:{
+          posts:res.data
+      }
+  }
+}
+export default function Home({posts}) {
   return (
     <div>
-      <p>{session?"Sesion iniciada "+session?.user.name+" Role: "+session?.user.role:"Sin sesion"}</p>
-      {console.log(session?.user)}
-       <button onClick={() => signIn()}>Sign in</button>
-       <button onClick={() => signOut()}>Sign out</button>
-       <Link href="/editor">Editor</Link>
+      {posts.filter(post=>post.highlight)
+        .map(post=>{
+          return <header>
+            <div className='h-72 overflow-hidden relative mt-10'>
+              <img className='absolute -inset-y-1/2' src={post.image}></img>
+              <div className='absolute w-full h-full bg-slate-900 flex flex-col justify-center items-center bg-opacity-70'>
+                <h1 className='font-bold text-6xl'>{post.title}</h1>
+                <p className='mt-5'>Lee mi ultima publicación aquí</p>
+              </div>
+              {/* Efecto parallax */}
+            </div>
+          </header>
+        })
+      }
     </div>
   )
 }

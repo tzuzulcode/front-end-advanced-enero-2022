@@ -19,7 +19,6 @@ export async function getServerSideProps(context){
 export default function Post({post}) {
   return (
     <>
-        <h1>Post</h1>
         <article className='prose prose-xl leading-10 prose-p:my-16 prose-invert p-5 md:0 mx-auto'>
             <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>

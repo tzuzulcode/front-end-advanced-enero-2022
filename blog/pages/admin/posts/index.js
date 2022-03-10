@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import AdminPage from '../../../components/AdminPage'
+import React from 'react'
 import Link from 'next/link'
 import axios from 'axios'
 
@@ -20,8 +19,10 @@ export async function getServerSideProps(context){
 export default function Posts({posts}) {
     return (
         <>
-            <h1>Posts</h1>
-            <Link href="/admin/posts/create">Crear nueva publicación</Link>
+            <div className='flex justify-between my-10'>
+                <h1 className='text-3xl font-bold'>Publicaciones realizadas</h1>
+                <Link href="/admin/posts/create"><span className='bg-yellow-200 text-black p-2 hover:bg-yellow-300 rounded-md cursor-pointer'>Crear publicación</span></Link>
+            </div>
 
             <section className='grid grid-cols-4 gap-5'>
             {posts.map((post)=>{

@@ -7,7 +7,6 @@ import '@uiw/react-markdown-preview/markdown.css'
 import axios from 'axios'
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const MarkDownEditor = dynamic(
     ()=>import("@uiw/react-markdown-editor").then((mod)=>mod.default),{
@@ -20,16 +19,18 @@ export default function Create() {
     const {data:session} = useSession()
     const [content,setContent] = useState("")
 
-    const titulo = useRef()
+    const title = useRef()
     const image = useRef()
+    const highlight = useRef()
 
     const saveContent = () =>{
         console.log(content)
         axios.post("/api/posts/create",{
-            title:titulo.current.value,
+            title:title.current.value,
             author:session.user,
             image:image.current.value,
             date: new Date(),
+            highlight:highlight.current.checked,
             content,
         }).then(res=>{
             router.replace("/admin/posts")
@@ -42,8 +43,10 @@ export default function Create() {
   return (
       <>
          <div className='p-7'>
-            <input className='text-black' type="text" ref={titulo} placeholder="Titulo de la publicación"></input>
+            <input className='text-black' type="text" ref={title} placeholder="Titulo de la publicación"></input>
             <input className='text-black' type="text" ref={image} placeholder="Imagen de la publicación"></input>
+            <label htmlFor='highlight'>¿Highlight?</label>
+            <input id='highlight' className='text-black' type="checkbox" ref={highlight}></input>
             <MarkDownEditor
                 value={content}
                 onChange={(editor,data,value)=>{
