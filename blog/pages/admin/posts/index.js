@@ -11,7 +11,7 @@ export async function getServerSideProps(context){
     
     return {
         props:{
-            posts:res.data
+            posts:res.data.posts
         }
     }
 }

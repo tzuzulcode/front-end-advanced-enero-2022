@@ -5,3 +5,23 @@
 .md-editor-content-editor,.CodeMirror-code{
     height: 500px;
 }
+.ce-toolbar__plus:hover{
+    background-color: rgb(15,23,42);
+}
+.ce-toolbar__settings-btn:hover{
+    background-color: rgb(15,23,42);
+}
+.ce-settings{
+    background-color: rgb(15,23,42);
+    border-color: rgb(15,23,42);
+}
+.ce-settings__button:hover{
+    background-color: rgb(100, 116, 139);
+}
+/* .ce-paragraph{
+    background-color: rgb(100, 116, 139);
+} */
+
+.icon{
+    color: white;
+}

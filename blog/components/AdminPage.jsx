@@ -16,6 +16,7 @@ export default function AdminPage({children}) {
             <ul className='flex px-7 py-5 gap-5'>
                 <li><Link href="/admin">Admin</Link></li>
                 <li><Link href="/admin/posts">Posts</Link></li>
+                <li><Link href="/admin/posts/rich-text">Rich Text</Link></li>
                 <li><Link href="/admin/categories">Categories</Link></li>
                 <li><Link href="/admin/comments">Comments</Link></li>
             </ul>
