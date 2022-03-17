@@ -3,7 +3,7 @@ import axios from 'axios'
 export async function getServerSideProps(context){
   const secure = context.req.connection.encrypted
   
-  const url = `${secure?"https":"http"}://${context.req.headers.host}/api/posts`
+  const url = `${secure?"https":"http"}://${context.req.headers.host}/api/articles`
   
   const res = await axios.get(url)
   
@@ -11,7 +11,7 @@ export async function getServerSideProps(context){
       props:res.data
   }
 }
-export default function Home({posts,highlights}) {
+export default function Home({articles:posts,highlights}) {
   return (
     <div>
       <header>
