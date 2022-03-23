@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Link from 'next/link'
 
 export async function getServerSideProps(context){
   const secure = context.req.connection.encrypted
@@ -28,7 +29,7 @@ export default function Home({articles:posts,highlights}) {
           })
         } */}
         {highlights.map(post=>{
-            return <article>
+            return <article key={post.id}>
               <div className="h-96 mt-10 bg-fixed"
               style={{backgroundImage:`url(${post.image})`}}
                 >
@@ -44,7 +45,8 @@ export default function Home({articles:posts,highlights}) {
       <h2 className="text-4xl font-bold mt-20 mb-10 text-center">Publicaciones más recientes</h2>
       <section className="grid grid-cols-2 gap-5 mb-10">
       {posts.map(post=>{
-          return <article className='cursor-pointer'>
+          return <article key={post.id} className='cursor-pointer'>
+            <Link href={"/articles/"+post.id}>
             <div className='h-72 overflow-hidden relative'>
               <img className='absolute -inset-y-1/2' src={post.image}></img>
               <div className='absolute w-full h-full bg-slate-900 flex flex-col justify-center items-center bg-opacity-70 hover:bg-opacity-40'>
@@ -53,6 +55,7 @@ export default function Home({articles:posts,highlights}) {
               </div>
               {/* Efecto parallax */}
             </div>
+            </Link>
           </article>
         })
       }
