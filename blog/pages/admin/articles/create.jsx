@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import axios from 'axios'
 import dynamic from 'next/dynamic'
 // import Editor from '../../../components/Editor'
@@ -16,7 +16,8 @@ const EditorV2 = dynamic(
 export default function RichText() {
     const router = useRouter()
     //Ref de editorInstance
-    const ejInstance = useRef()
+
+    const editor = useRef()
 
     const {data:session} = useSession()
 
@@ -25,7 +26,10 @@ export default function RichText() {
     const highlight = useRef()
     
     const saveContent = async () =>{
-        const content = await ejInstance.current.save()
+
+        const content = await editor.current.save()
+        console.log(content)
+        
         try{
             const res = await axios.post("/api/articles/create",{
                 title:title.current.value,
@@ -43,7 +47,6 @@ export default function RichText() {
             console.log(error)
         }
     }
-    
 
     return (
         <div>
@@ -55,7 +58,7 @@ export default function RichText() {
                 <button className='bg-yellow-200 text-slate-700 px-10 py-2 ml-auto' onClick={saveContent}>Create</button>
             </div>
             {/* <Editor ejInstance={ejInstance}/> */}
-            {EditorV2 && <EditorV2/>}
+            {EditorV2 && <EditorV2 instance={editor}/>}
         </div>
     )
 }
