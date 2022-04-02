@@ -16,6 +16,7 @@ export default NextAuth({
         }),
         Credentials({
             async authorize(credentials, req) {
+                console.log(credentials)
                 await prisma.$connect()
 
                 if(credentials.type==="register"){

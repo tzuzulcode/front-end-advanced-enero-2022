@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^3.11.1",
+    "axios": "^0.26.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",
