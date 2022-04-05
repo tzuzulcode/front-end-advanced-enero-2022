@@ -1,8 +1,6 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
 
 export default NextAuth({
     pages:{
@@ -59,8 +57,6 @@ export default NextAuth({
                     name:user.name,
                     profilePic:user.profilePic,
                   }
-
-
                 }
 
                 return null

@@ -34,7 +34,7 @@ export default function Login({csrfToken}) {
       }).then(data=>{
         console.log(data)
         setSubmitting(false)
-        window.location.href = data.request.responseURL
+        //window.location.href = data.request.responseURL
       }).catch(error=>{
         console.log(error)
       })
