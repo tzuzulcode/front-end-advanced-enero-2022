@@ -1,6 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
+import { PrismaClient } from '@prisma/client'
+import {setCookies} from 'cookies-next'
+const prisma = new PrismaClient()
 
 export default NextAuth({
     pages:{
@@ -62,5 +65,22 @@ export default NextAuth({
                 return null
               }
         })
-    ]
+    ],
+    callbacks:{
+      async jwt({token,account}){
+        if(account?.providerAccountId){
+          console.log(account.providerAccountId)
+          token.id = account.providerAccountId
+        }
+
+        return token
+      },
+      async session({ session, token, user }){
+        if(token?.id){
+            session.user.id = token.id
+        }
+        return session
+    }
+
+    }
 })
