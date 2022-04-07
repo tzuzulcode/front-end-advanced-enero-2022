@@ -18,6 +18,7 @@ model User {
   name  String?
   profilePic String?
   password String
+  idProvider String?
   productIDs String[] @db.ObjectId
   products Product[] @relation(fields: [productIDs], references: [id])
 }
@@ -32,5 +33,4 @@ model Product{
   userIDs String[] @db.ObjectId
   users User[] @relation(fields: [userIDs],references: [id])
 }
-
 

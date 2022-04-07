@@ -29,6 +29,7 @@ export default function Home({products}) {
   if(data.data?.user?.id){
     console.log("Session")
     setCookies("userID",data.data.user?.id)
+    setCookies("email",data.data.user?.email)
   }
 
   return (

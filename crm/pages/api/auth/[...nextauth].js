@@ -1,9 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
-import { PrismaClient } from '@prisma/client'
+
 import {setCookies} from 'cookies-next'
-const prisma = new PrismaClient()
+import prisma from "../../../libs/prisma"
 
 export default NextAuth({
     pages:{

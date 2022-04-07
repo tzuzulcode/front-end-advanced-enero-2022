@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-import { getCookie } from 'cookies-next'
-const prisma = new PrismaClient()
+import prisma from "../../../libs/prisma"
 
 export default async function one(req,res){
     const product = await prisma.product.findFirst({
