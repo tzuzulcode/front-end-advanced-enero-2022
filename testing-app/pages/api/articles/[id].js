@@ -1,4 +1,4 @@
-import data from '../../../data/articles';
+import data from '../.../../../data/articles';
 
 export default (req, res) => {
   const id = req.query.id;
